@@ -1,22 +1,47 @@
 <div class="container" id="question-show-container">
   <div>
-    <h1>{{question.title}}</h1>
-    <pagedown-viewer content="question.content"></pagedown-viewer>
+
+    <h1>
+      <div ng-if="!editing">{{question.title}}</div>
+      <!-- edit question title -->
+      <input type=text ng-model="question.title" ng-if=" editing">
+    </h1>
+
+    <pagedown-viewer content="question.content" ng-if="!editing"></pagedown-viewer>
+
+    <!-- edit question content -->
+    <pagedown-editor ng-model="question.content" ng-if=" editing"></pagedown-editor>
+    <button type="submit" class="btn btn-primary" ng-click="editing=false; updateQuestion()" ng-show=" editing">save</button>
+    <a class="btn" ng-click="editing=!editing;" ng-show="isOwner(question) && !editing">edit</a>
+    <a ng-show="isOwner(question)" type="button" ng-click="deleteQuestion()">delete</a>
+
     <div class="text-right">Asked by {{question.user.name || "Anonymous"}} at {{question.createdAt}}</div>
+
     <span ng-repeat="tag in question.tags">
-        <span class="label label-info">
-          {{tag.text}}
-        </span>
+      <span class="label label-info">
+        {{tag.text}}
+      </span>
     </span>
+
   </div>
+
   <hr>
 
   <h3>{{question.answers.length}} Answers</h3>
   <div ng-repeat="answer in question.answers">
     <hr/>
     <div class="answer">
-      <pagedown-viewer content="answer.content"></pagedown-viewer>
+      <pagedown-viewer content="answer.content" ng-if="!editing"></pagedown-viewer>
+
+      <!-- edit answer -->
+      <pagedown-editor ng-model="answer.content" ng-if=" editing"></pagedown-editor>
+      <a type="submit" class="btn btn-primary" ng-click="editing=false;updateAnswer(answer)" ng-show=" editing">save</button>
+      <a class="btn" ng-click="editing=!editing;" ng-show="isOwner(answer) && !editing">edit</button>
+      <a class="btn" ng-click="editing=!editing;" ng-if="editing">cancel</button>
+      <a ng-show="isOwner(answer)" type="button" ng-click="deleteAnswer(answer)">delete</a>
+
       <div class="text-right">Answered by {{answer.user.name || "Anonymous"}} at {{question.createdAt}}</div>
+
     </div>
   </div>
 
