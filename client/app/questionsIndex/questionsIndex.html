@@ -6,26 +6,41 @@
 </header>
 
 <div class="container">
-  <br/>
+  <br>
+
   <div style="text-align: center">
-    <a type="button" class="btn btn-primary" href="/questions/create">Ask Question</a>
+    <a type="button" class="btn btn-warning" href="/questions/create">Ask Question</a>
   </div>
+
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Question</th>
         <th>Description</th>
       </tr>
-      <tbody>
-        <tr ng-repeat="question in questions">
-          <td>
-            <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
-          </td>
-          <td>
-            {{question.content}}
-          </td>
-        </tr>
-      </tbody>
     </thead>
+
+    <tbody>
+      <tr ng-repeat="question in questions">
+        <td>
+          <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
+          <div>
+            <span ng-repeat="tag in question.tags">
+            <span class="label label-info">
+              {{tag.text}}
+            </span> &nbsp;
+            </span>
+          </div>
+        </td>
+        <td>
+          <p>
+            {{question.content}}
+          </p>
+          <!-- <pagedown-viewer content="question.content"></pagedown-viewer> -->
+        </td>
+      </tr>
+    </tbody>
+
   </table>
+
 </div>

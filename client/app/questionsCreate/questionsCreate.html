@@ -3,9 +3,16 @@
     <h2>Title:</h2>
     <input type="text" class="form-control" ng-model="question.title">
     <br>
+
     <h2>Question:</h2>
     <!-- <textarea rows=10 cols=80 ng-model="question.content"></textarea> -->
     <pagedown-editor ng-model="question.content"></pagedown-editor>
+
+    <h2>Tags:</h2>
+    <tags-input ng-model="question.tags">
+      <auto-complete source="loadTags($query)"></auto-complete>
+    </tags-input>
+
     <input type="submit" class="btn btn-primary" value="Post question">
   </form>
 </div>

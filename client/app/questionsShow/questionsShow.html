@@ -1,13 +1,16 @@
 <div class="container" id="question-show-container">
   <div>
-    <div>
-      <h1>{{question.title}}</h1>
-    </div>
+    <h1>{{question.title}}</h1>
+    <pagedown-viewer content="question.content"></pagedown-viewer>
+    <span ng-repeat="tag in question.tags">
+        <span class="label label-info">
+          {{tag.text}}
+        </span>
+    </span>
   </div>
   <hr>
-  <pagedown-viewer content="question.content"></pagedown-viewer>
-  <h3>{{question.answers.length}} Answers</h3>
 
+  <h3>{{question.answers.length}} Answers</h3>
   <div ng-repeat="answer in question.answers">
     <hr/>
     <div class="answer">
@@ -15,7 +18,7 @@
     </div>
   </div>
 
-  <hr/>
+  <hr>
 
   <h3>Answers</h3>
   <form name="answerForm" ng-submit="submitAnswer()">
