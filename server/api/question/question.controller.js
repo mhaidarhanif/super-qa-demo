@@ -12,16 +12,6 @@
 import _ from 'lodash'
 import Question from './question.model'
 
-function createAnswer(req, res) {
-	Question.update({ _id: req.params.id }, { $push: { answers: req.body } }, function (err, num) {
-		if (err) {
-			return handleError(res)(err) }
-		if (num === 0) {
-			return res.send(404).end() }
-		exports.show(req, res)
-	})
-}
-
 function respondWithResult(res, statusCode) {
 	statusCode = statusCode || 200
 	return function (entity) {
@@ -109,4 +99,17 @@ export function destroy(req, res) {
 		.then(handleEntityNotFound(res))
 		.then(removeEntity(res))
 		.catch(handleError(res))
+}
+
+// Create an Answer to a Question
+export function createAnswer(req, res) {
+	Question.update({ _id: req.params.id }, { $push: { answers: req.body } }, function (err, num) {
+		if (err) {
+			return handleError(res)(err)
+		}
+		if (num === 0) {
+			return res.send(404).end()
+		}
+		exports.show(req, res)
+	})
 }

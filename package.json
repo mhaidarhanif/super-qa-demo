@@ -1,5 +1,5 @@
 {
-  "name": "super-qa3",
+  "name": "super-qa",
   "version": "0.0.0",
   "main": "server/app.js",
   "dependencies": {
