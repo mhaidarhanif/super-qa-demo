@@ -4,8 +4,14 @@
     <h1>
       <div ng-if="!editing">{{question.title}}</div>
       <!-- edit question title -->
-      <input type=text ng-model="question.title" ng-if=" editing">
+      <input type="text" class="form-control" ng-model="question.title" name="question_title" ng-if="editing" required>
+      <span class="text-danger" ng-messages="form.question_title.$error">
+        <span ng-message="required">Please fix your title</span>
+      </span>
+
     </h1>
+
+    <!-- TODO: Disable save if title and content are broken -->
 
     <pagedown-viewer content="question.content" ng-if="!editing"></pagedown-viewer>
 
@@ -50,8 +56,8 @@
   <h3>Answers</h3>
   <form name="answerForm" ng-submit="submitAnswer()">
     <!-- <textarea rows=10 cols=80 ng-model="newAnswer.content"></textarea> -->
-    <pagedown-editor ng-model="newAnswer.content"></pagedown-editor>
-    <input type="submit" class="btn btn-primary" value="Post Your Answer">
+    <pagedown-editor ng-model="newAnswer.content" required></pagedown-editor>
+    <input type="submit" class="btn btn-primary" ng-disabled="answerForm.$invalid" value="Post Your Answer">
   </form>
 
 </div>
