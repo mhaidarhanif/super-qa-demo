@@ -59,6 +59,8 @@ function handleError(res, statusCode) {
 	}
 }
 
+// =============================================================================
+
 // An update or delete must be authorized first
 function handleUnauthorized(req, res) {
 	return function (entity) {
@@ -159,8 +161,10 @@ export function destroyAnswer(req, res) {
 	})
 }
 
+// =============================================================================
 
-/* comments APIs */
+// comments
+
 export function createComment(req, res) {
 	req.body.user = req.user.id
 	Question.update({ _id: req.params.id }, { $push: { comments: req.body } }, function (err, num) {
@@ -256,4 +260,127 @@ export function updateAnswerComment(req, res) {
 			return res.send(404).end()
 		}
 	})
+}
+
+
+
+// =============================================================================
+
+// votes
+
+export function vote(req, res) {
+	Question.update({ _id: req.params.id }, { $push: { votes: req.user.id } }, function (err, num) {
+		if (err) {
+			return handleError(res)(err);
+		}
+		if (num === 0) {
+			return res.send(404).end();
+		}
+		exports.show(req, res);
+	});
+}
+export function unvote(req, res) {
+	Question.update({ _id: req.params.id }, { $pull: { votes: req.user.id } }, function (err, num) {
+		if (err) {
+			return handleError(res, err);
+		}
+		if (num === 0) {
+			return res.send(404).end();
+		}
+		exports.show(req, res);
+	});
+}
+
+/* vote/unvote answer */
+export function voteAnswer(req, res) {
+	Question.update({ _id: req.params.id, 'answers._id': req.params.answerId }, { $push: { 'answers.$.votes': req.user.id } }, function (err, num) {
+		if (err) {
+			return handleError(res)(err);
+		}
+		if (num === 0) {
+			return res.send(404).end();
+		}
+		exports.show(req, res);
+	});
+}
+export function unvoteAnswer(req, res) {
+	Question.update({ _id: req.params.id, 'answers._id': req.params.answerId }, { $pull: { 'answers.$.votes': req.user.id } }, function (err, num) {
+		if (err) {
+			return handleError(res)(err);
+		}
+		if (num === 0) {
+			return res.send(404).end();
+		}
+		exports.show(req, res);
+	});
+}
+
+/* vote/unvote question comment */
+export function voteComment(req, res) {
+	Question.update({ _id: req.params.id, 'comments._id': req.params.commentId }, { $push: { 'comments.$.votes': req.user.id } }, function (err, num) {
+		if (err) {
+			return handleError(res)(err);
+		}
+		if (num === 0) {
+			return res.send(404).end();
+		}
+		exports.show(req, res);
+	});
+}
+export function unvoteComment(req, res) {
+	Question.update({ _id: req.params.id, 'comments._id': req.params.commentId }, { $pull: { 'comments.$.votes': req.user.id } }, function (err, num) {
+		if (err) {
+			return handleError(res)(err);
+		}
+		if (num === 0) {
+			return res.send(404).end();
+		}
+		exports.show(req, res);
+	});
+}
+
+/* vote/unvote question answer comment */
+var pushOrPullVoteAnswerComment = function (op, req, res) {
+	Question.find({ _id: req.params.id }).exec(function (err, questions) {
+		if (err) {
+			return handleError(res)(err);
+		}
+		if (questions.length === 0) {
+			return res.send(404).end();
+		}
+		var question = questions[0];
+		var found = false;
+		for (var i = 0; i < question.answers.length; i++) {
+			if (question.answers[i]._id.toString() === req.params.answerId) {
+				found = true;
+				var conditions = {};
+				conditions._id = req.params.id;
+				conditions['answers.' + i + '.comments._id'] = req.params.commentId;
+				var doc = {};
+				doc[op] = {};
+				doc[op]['answers.' + i + '.comments.$.votes'] = req.user.id;
+				// Question.update({_id: req.params.id, 'answers.' + i + '.comments._id': req.params.commentId}, {op: {('answers.' + i + '.comments.$.votes'): req.user.id}}, function(err, num){
+				/*jshint -W083 */
+				Question.update(conditions, doc, function (err, num) {
+					if (err) {
+						return handleError(res)(err);
+					}
+					if (num === 0) {
+						return res.send(404).end();
+					}
+					exports.show(req, res);
+					return;
+				});
+			}
+		}
+		if (!found) {
+			return res.send(404).end();
+		}
+	});
+};
+export function voteAnswerComment(req, res) {
+	pushOrPullVoteAnswerComment('$push', req, res);
+}
+export function unvoteAnswerComment(req, res) {
+	pushOrPullVoteAnswerComment('$pull', req, res);
 }

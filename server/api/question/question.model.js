@@ -12,11 +12,15 @@ var QuestionSchema = new mongoose.Schema({
 		type: mongoose.Schema.ObjectId,
 		ref: 'User'
 	},
-	createdAt: {
+	votes: [{
+		type: mongoose.Schema.ObjectId,
+		ref: 'User'
+  }],
+	createdAt: { // timestamp
 		type: Date,
 		default: Date.now
 	},
-	updatedAt: {
+	updatedAt: { // timestamp
 		type: Date,
 		default: Date.now
 	},
@@ -26,26 +30,19 @@ var QuestionSchema = new mongoose.Schema({
 			type: mongoose.Schema.ObjectId,
 			ref: 'User'
 		},
-		createdAt: {
-			type: Date,
-			default: Date.now
-		},
-		updatedAt: {
-			type: Date,
-			default: Date.now
-		}
-  }],
-	comments: [{
-		content: String,
-		user: {
+		votes: [{
 			type: mongoose.Schema.ObjectId,
 			ref: 'User'
-		},
-		createdAt: {
+	  }],
+		createdAt: { // timestamp
 			type: Date,
-			default: Date.now,
+			default: Date.now
+		},
+		updatedAt: { // timestamp
+			type: Date,
+			default: Date.now
 		}
-  }],
+  }]
 })
 
 QuestionSchema.pre('find', function (next) {
