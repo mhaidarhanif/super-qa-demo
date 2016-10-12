@@ -5,4 +5,7 @@ angular.module('superQaApp')
 		$http.get('/api/questions').success(function (questions) {
 			$scope.questions = questions
 		})
+		$scope.isVote = function (obj) {
+			return Auth.isLoggedIn() && obj && obj.votes && obj.votes.indexOf(Auth.getCurrentUser()._id) !== -1;
+		};
 	})
