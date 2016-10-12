@@ -2,6 +2,7 @@
   <div>
     <h1>{{question.title}}</h1>
     <pagedown-viewer content="question.content"></pagedown-viewer>
+    <div class="text-right">Asked by {{question.user.name || "Anonymous"}} at {{question.createdAt}}</div>
     <span ng-repeat="tag in question.tags">
         <span class="label label-info">
           {{tag.text}}
@@ -15,6 +16,7 @@
     <hr/>
     <div class="answer">
       <pagedown-viewer content="answer.content"></pagedown-viewer>
+      <div class="text-right">Answered by {{answer.user.name || "Anonymous"}} at {{question.createdAt}}</div>
     </div>
   </div>
 
