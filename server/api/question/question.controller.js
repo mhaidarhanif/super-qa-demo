@@ -59,9 +59,23 @@ function handleError(res, statusCode) {
 	}
 }
 
+// An update or delete must be authorized first
+function handleUnauthorized(req, res) {
+	return function (entity) {
+		if (!entity) {
+			return null
+		}
+		if (entity.user._id.toString() !== req.user._id.toString()) {
+			res.send(403).end()
+			return null
+		}
+		return entity
+	}
+}
+
 // Gets a list of Questions
 export function index(req, res) {
-	Question.findAsync()
+	Question.find().sort({ createdAt: -1 }).limit(20).execAsync()
 		.then(respondWithResult(res))
 		.catch(handleError(res))
 }
@@ -76,7 +90,8 @@ export function show(req, res) {
 
 // Creates a new Question in the DB
 export function create(req, res) {
-	Question.createAsync(req.body)
+	req.body.user = req.user
+	Question.create(req.body)
 		.then(respondWithResult(res, 201))
 		.catch(handleError(res))
 }
@@ -88,6 +103,7 @@ export function update(req, res) {
 	}
 	Question.findByIdAsync(req.params.id)
 		.then(handleEntityNotFound(res))
+		.then(handleUnauthorized(req, res)) // must be authenticated
 		.then(saveUpdates(req.body))
 		.then(respondWithResult(res))
 		.catch(handleError(res))
@@ -97,13 +113,42 @@ export function update(req, res) {
 export function destroy(req, res) {
 	Question.findByIdAsync(req.params.id)
 		.then(handleEntityNotFound(res))
+		.then(handleUnauthorized(req, res)) // must be authenticated
 		.then(removeEntity(res))
 		.catch(handleError(res))
 }
 
 // Create an Answer to a Question
 export function createAnswer(req, res) {
+	req.body.user = req.user
 	Question.update({ _id: req.params.id }, { $push: { answers: req.body } }, function (err, num) {
+		if (err) {
+			return handleError(res)(err)
+		}
+		if (num === 0) {
+			return res.send(404).end()
+		}
+		exports.show(req, res)
+	})
+}
+
+// Update an Answer in a Question
+export function updateAnswer(req, res) {
+	Question.update({ _id: req.params.id, 'answers._id': req.params.answerId }, { 'answers.$.content': req.body.content, 'answers.$.user': req.user.id }, function (err, num) {
+		if (err) {
+			return handleError(res)(err)
+		}
+		if (num === 0) {
+			return res.send(404).end()
+		}
+		exports.show(req, res)
+	})
+}
+
+// Delete an Answer in a Question
+export function destroyAnswer(req, res) {
+	// TODO: Why update not delete?
+	Question.update({ _id: req.params.id }, { $pull: { answers: { _id: req.params.answerId, 'user': req.user._id } } }, function (err, num) {
 		if (err) {
 			return handleError(res)(err)
 		}

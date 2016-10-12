@@ -1,17 +1,52 @@
-'use strict';
+'use strict'
 
-var mongoose = require('bluebird').promisifyAll(require('mongoose'));
+var mongoose = require('bluebird').promisifyAll(require('mongoose'))
 
 var QuestionSchema = new mongoose.Schema({
 	title: String,
 	content: String,
 	answers: [{
-		content: String
+		content: String,
+		user: {
+			type: mongoose.Schema.ObjectId,
+			ref: 'User'
+		},
+		createdAt: {
+			type: Date,
+			default: Date.now
+		},
+		updatedAt: {
+			type: Date,
+			default: Date.now
+		}
   }],
 	tags: [{
-		text: String,
+		text: String
   }],
-	active: Boolean
-});
+	user: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'User'
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now
+	},
+	updatedAt: {
+		type: Date,
+		default: Date.now
+	}
+})
 
-export default mongoose.model('Question', QuestionSchema);
+QuestionSchema.pre('find', function (next) {
+	this.populate('user', 'name')
+	this.populate('answers.user', 'name')
+	next()
+})
+
+QuestionSchema.pre('findOne', function (next) {
+	this.populate('user', 'name')
+	this.populate('answers.user', 'name')
+	next()
+})
+
+export default mongoose.model('Question', QuestionSchema)
