@@ -15,6 +15,9 @@ angular.module('superQaApp')
 
 		loadQuestions()
 
+		// ------------------------------------------------------------------------
+		// answers
+
 		$scope.newAnswer = {}
 		$scope.submitAnswer = function () {
 			$http.post('/api/questions/' + $stateParams.id + '/answers', $scope.newAnswer).success(function () {
@@ -47,40 +50,58 @@ angular.module('superQaApp')
 			})
 		}
 
+		// ------------------------------------------------------------------------
 		// Comments
 
-		$scope.newComment = {};
+		$scope.newComment = {}
 		$scope.submitComment = function () {
 			$http.post('/api/questions/' + $stateParams.id + '/comments', $scope.newComment).success(function () {
-				loadQuestions();
-				$scope.newComment = {};
-				$scope.editNewComment = false;
-			});
-		};
+				loadQuestions()
+				$scope.newComment = {}
+				$scope.editNewComment = false
+			})
+		}
 		$scope.submitAnswerComment = function (answer) {
 			$http.post('/api/questions/' + $stateParams.id + '/answers/' + answer._id + '/comments', answer.newAnswerComment).success(function () {
-				loadQuestions();
-			});
-		};
+				loadQuestions()
+			})
+		}
 		$scope.deleteComment = function (comment) {
 			$http.delete('/api/questions/' + $stateParams.id + '/comments/' + comment._id).success(function () {
-				loadQuestions();
-			});
-		};
+				loadQuestions()
+			})
+		}
 		$scope.deleteAnswerComment = function (answer, answerComment) {
 			$http.delete('/api/questions/' + $stateParams.id + '/answers/' + answer._id + '/comments/' + answerComment._id).success(function () {
-				loadQuestions();
-			});
-		};
+				loadQuestions()
+			})
+		}
 		$scope.updateComment = function (comment) {
 			$http.put('/api/questions/' + $stateParams.id + '/comments/' + comment._id, comment).success(function () {
-				loadQuestions();
-			});
-		};
+				loadQuestions()
+			})
+		}
 		$scope.updateAnswerComment = function (answer, answerComment) {
 			$http.put('/api/questions/' + $stateParams.id + '/answers/' + answer._id + '/comments/' + answerComment._id, answerComment).success(function () {
-				loadQuestions();
-			});
-		};
+				loadQuestions()
+			})
+		}
+
+		// ------------------------------------------------------------------------
+		// votes
+
+		$scope.isVote = function (obj) {
+			return Auth.isLoggedIn() && obj && obj.votes && obj.votes.indexOf(Auth.getCurrentUser()._id) !== -1
+		}
+		$scope.vote = function (subpath) {
+			$http.put('/api/questions/' + $scope.question._id + subpath + '/vote').success(function () {
+				loadQuestions()
+			})
+		}
+		$scope.unvote = function (subpath) {
+			$http.delete('/api/questions/' + $scope.question._id + subpath + '/vote').success(function () {
+				loadQuestions()
+			})
+		}
 
 	})
