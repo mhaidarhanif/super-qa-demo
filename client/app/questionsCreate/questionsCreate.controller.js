@@ -1,15 +1,14 @@
 'use strict'
 
 angular.module('superQaApp')
-	.controller('QuestionsCreateCtrl', function ($scope, $http, $location) {
+	.controller('QuestionsCreateCtrl', function ($scope, $http, Auth, $location) {
 
-		// TODO: BUGGY
 		// Redirect to /login if not signed in yet
-		// if (!Auth.isLoggedIn()) {
-		// 	$location.path('/login');
-		// 	$location.replace();
-		// 	return;
-		// }
+		if (!Auth.isLoggedIn()) {
+			$location.path('/login');
+			$location.replace();
+			return;
+		}
 
 		// Get all questions from server
 		$scope.submit = function () {

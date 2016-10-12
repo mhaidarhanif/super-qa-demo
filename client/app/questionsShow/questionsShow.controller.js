@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('superQaApp')
-	.controller('QuestionsShowCtrl', function ($scope, $http, $stateParams) {
+	.controller('QuestionsShowCtrl', function ($scope, $http, $stateParams, Auth, $location) {
 
 		$scope.isOwner = function (obj) {
 			return Auth.isLoggedIn() && obj && obj.user && obj.user._id === Auth.getCurrentUser()._id
