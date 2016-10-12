@@ -11,7 +11,8 @@ angular.module('superQa3App', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'ui.pagedown'
+  'ui.pagedown',
+  'ngTagsInput'
 ])
 	.config(function ($urlRouterProvider, $locationProvider) {
 		$urlRouterProvider

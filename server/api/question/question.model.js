@@ -8,6 +8,9 @@ var QuestionSchema = new mongoose.Schema({
 	answers: [{
 		content: String
   }],
+	tags: [{
+		text: String,
+  }],
 	active: Boolean
 });
 
