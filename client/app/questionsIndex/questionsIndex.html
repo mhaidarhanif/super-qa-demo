@@ -8,7 +8,7 @@
 <div class="container">
   <br>
 
-  <div style="text-align: center">
+  <div>
     <a type="button" class="btn btn-warning" href="/questions/create">Ask Question</a>
   </div>
 
@@ -30,10 +30,6 @@
           <div style="font-size: xx-large;">{{question.answers.length}}</div>
         </td>
         <td>
-          <div style="float: right;">
-            <span ng-if="isVote(question)" class="glyphicon glyphicon-chevron-up" style="color: #ff922b;"></span>
-            <span ng-if="!isVote(question)" class="glyphicon glyphicon-chevron-up"></span>
-          </div>
           <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
           <div>
             <span ng-repeat="tag in question.tags">

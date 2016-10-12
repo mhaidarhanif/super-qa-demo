@@ -1,5 +1,7 @@
 <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
+
   <div class="container">
+
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
         <span class="sr-only">Toggle navigation</span>
@@ -9,12 +11,13 @@
       </button>
       <a href="/" class="navbar-brand">Super QA</a>
     </div>
+
     <div collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in nav.menu" ui-sref-active="active">
-          <a ui-sref="{{item.state}}">{{item.title}}</a>
+        <li ng-repeat="item in nav.menu" ng-class="{active: isActive(item.link())}" ng-show="item.show()">
+          <a ng-href="{{item.link()}}">{{item.title}}</a>
         </li>
-        <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -24,8 +27,12 @@
           <p class="navbar-text">Hi {{ nav.getCurrentUser().name }}</p>
         </li>
         <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin"><b>Admin Panel</b></a></li>
         <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Sign out</a></li>
       </ul>
+
     </div>
+
   </div>
+
 </div>

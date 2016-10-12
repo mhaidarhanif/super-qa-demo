@@ -77,7 +77,9 @@ function handleUnauthorized(req, res) {
 
 // Gets a list of Questions
 export function index(req, res) {
-	Question.find().sort({ createdAt: -1 }).limit(20).execAsync()
+	// query for selected questions
+	var query = req.query.query && JSON.parse(req.query.query)
+	Question.find(query).sort({ createdAt: -1 }).limit(20).execAsync()
 		.then(respondWithResult(res))
 		.catch(handleError(res))
 }
@@ -119,6 +121,8 @@ export function destroy(req, res) {
 		.then(removeEntity(res))
 		.catch(handleError(res))
 }
+
+// -----------------------------------------------------------------------------
 
 // Create an Answer to a Question
 export function createAnswer(req, res) {
@@ -200,6 +204,7 @@ export function voteAnswer(req, res) {
 		exports.show(req, res);
 	});
 }
+
 export function unvoteAnswer(req, res) {
 	Question.update({ _id: req.params.id, 'answers._id': req.params.answerId }, { $pull: { 'answers.$.votes': req.user.id } }, function (err, num) {
 		if (err) {
