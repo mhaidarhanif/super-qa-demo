@@ -10,11 +10,12 @@ angular.module('superQa3App', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'ui.pagedown'
 ])
-  .config(function($urlRouterProvider, $locationProvider) {
-    $urlRouterProvider
-      .otherwise('/');
+	.config(function ($urlRouterProvider, $locationProvider) {
+		$urlRouterProvider
+			.otherwise('/');
 
-    $locationProvider.html5Mode(true);
-  });
+		$locationProvider.html5Mode(true);
+	});

@@ -4,12 +4,12 @@
 // ==================================
 module.exports = {
 
-  // MongoDB connection options
-  mongo: {
-    uri: 'mongodb://localhost/superqa3-dev'
-  },
+	// MongoDB connection options
+	mongo: {
+		uri: 'mongodb://localhost/superqa-dev'
+	},
 
-  // Seed database on startup
-  seedDB: true
+	// Seed database on startup
+	seedDB: true
 
 };
