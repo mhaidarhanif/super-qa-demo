@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('superQa3App', [
-  'superQa3App.auth',
-  'superQa3App.admin',
-  'superQa3App.constants',
+angular.module('superQaApp', [
+  'superQaApp.auth',
+  'superQaApp.admin',
+  'superQaApp.constants',
   'ngCookies',
   'ngResource',
   'ngSanitize',

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .factory('Modal', function($rootScope, $modal) {
     /**
      * Opens a modal

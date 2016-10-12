@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('superQa3App')
+angular.module('superQaApp')
 	.controller('QuestionsCreateCtrl', function ($scope, $http, $location) {
 
 		// Redirect to /login if not signed in yet

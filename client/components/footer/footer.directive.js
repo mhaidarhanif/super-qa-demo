@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .directive('footer', function() {
     return {
       templateUrl: 'components/footer/footer.html',

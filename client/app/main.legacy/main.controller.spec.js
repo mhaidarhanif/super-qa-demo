@@ -3,7 +3,7 @@
 describe('Controller: MainController', function() {
 
   // load the controller's module
-  beforeEach(module('superQa3App'));
+  beforeEach(module('superQaApp'));
   beforeEach(module('stateMock'));
   beforeEach(module('socketMock'));
 

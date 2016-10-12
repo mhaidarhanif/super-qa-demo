@@ -14,7 +14,7 @@ class AdminController {
   }
 }
 
-angular.module('superQa3App.admin')
+angular.module('superQaApp.admin')
   .controller('AdminController', AdminController);
 
 })();

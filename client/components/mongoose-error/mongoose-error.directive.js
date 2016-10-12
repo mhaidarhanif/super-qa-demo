@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('superQa3App')
+angular.module('superQaApp')
   .directive('mongooseError', function() {
     return {
       restrict: 'A',

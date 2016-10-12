@@ -59,7 +59,7 @@ function UtilService($window) {
   return Util;
 }
 
-angular.module('superQa3App.util')
+angular.module('superQaApp.util')
   .factory('Util', UtilService);
 
 })();

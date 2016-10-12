@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('superQa3App.admin', [
-  'superQa3App.auth',
+angular.module('superQaApp.admin', [
+  'superQaApp.auth',
   'ui.router'
 ]);

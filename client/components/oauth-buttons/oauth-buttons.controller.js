@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .controller('OauthButtonsCtrl', function($window) {
     this.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;

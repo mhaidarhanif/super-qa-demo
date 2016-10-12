@@ -1,5 +1,5 @@
 (function(angular, undefined) {
-  angular.module("superQa3App.constants", [])
+  angular.module("superQaApp.constants", [])
 
 .constant("appConfig", {
 	"userRoles": [

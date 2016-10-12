@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .directive('navbar', () => ({
     templateUrl: 'components/navbar/navbar.html',
     restrict: 'E',

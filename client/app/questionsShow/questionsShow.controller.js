@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('superQa3App')
+angular.module('superQaApp')
 	.controller('QuestionsShowCtrl', function ($scope, $http, $stateParams) {
 
 		let loadQuestions = function () {

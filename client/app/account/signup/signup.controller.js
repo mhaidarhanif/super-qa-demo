@@ -39,5 +39,5 @@ class SignupController {
   }
 }
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .controller('SignupController', SignupController);

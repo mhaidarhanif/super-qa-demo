@@ -26,7 +26,7 @@ function authInterceptor($rootScope, $q, $cookies, $injector, Util) {
   };
 }
 
-angular.module('superQa3App.auth')
+angular.module('superQaApp.auth')
   .factory('authInterceptor', authInterceptor);
 
 })();

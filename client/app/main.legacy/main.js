@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('superQa3App')
+angular.module('superQaApp')
 	.config(function ($stateProvider) {
 		$stateProvider
 			.state('main.legacy', {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .directive('oauthButtons', function() {
     return {
       templateUrl: 'components/oauth-buttons/oauth-buttons.html',

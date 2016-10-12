@@ -30,7 +30,7 @@ class MainController {
   }
 }
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .controller('MainController', MainController);
 
 })();

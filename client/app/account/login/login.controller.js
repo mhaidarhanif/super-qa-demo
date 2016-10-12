@@ -29,5 +29,5 @@ class LoginController {
   }
 }
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .controller('LoginController', LoginController);

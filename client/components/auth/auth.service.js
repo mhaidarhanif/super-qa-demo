@@ -183,7 +183,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
   return Auth;
 }
 
-angular.module('superQa3App.auth')
+angular.module('superQaApp.auth')
   .factory('Auth', AuthService);
 
 })();

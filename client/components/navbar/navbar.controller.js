@@ -17,5 +17,5 @@ class NavbarController {
 	}
 }
 
-angular.module('superQa3App')
+angular.module('superQaApp')
 	.controller('NavbarController', NavbarController);

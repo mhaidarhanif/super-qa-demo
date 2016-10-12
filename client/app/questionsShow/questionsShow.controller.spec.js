@@ -3,7 +3,7 @@
 describe('Controller: QuestionsShowCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('superQa3App'));
+  beforeEach(module('superQaApp'));
 
   var QuestionsShowCtrl, scope;
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('superQa3App.admin')
+angular.module('superQaApp.admin')
   .config(function($stateProvider) {
     $stateProvider
       .state('admin', {

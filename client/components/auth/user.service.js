@@ -21,7 +21,7 @@ function UserResource($resource) {
   });
 }
 
-angular.module('superQa3App.auth')
+angular.module('superQaApp.auth')
   .factory('User', UserResource);
 
 })();

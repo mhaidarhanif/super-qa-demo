@@ -25,5 +25,5 @@ class SettingsController {
   }
 }
 
-angular.module('superQa3App')
+angular.module('superQaApp')
   .controller('SettingsController', SettingsController);
