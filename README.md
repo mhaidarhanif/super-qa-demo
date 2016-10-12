@@ -33,32 +33,51 @@ Run `npm test` will run the unit tests with Karma.
 
 ## API
 
+**Server Endpoint Prefix:** `/api`
+
+### Misc
+
+| Method | URL | Description
+|--------|-----|-------------
+| GET    | `/` | Get home page
+
+### Users
+
+| Method | URL | Description
+|--------|-----|-------------
+| GET    | `/users` | Get list of users (if admin)
+| POST   | `/users` | Create a user
+| POST   | `/auth/local`          | Auth with local strategy
+| GET    | `/users/me`            | Go to user home page
+| DELETE | `/users/:id`           | Delete a user (if admin)
+| GET    | `/users/:id/password`  | Get my settings for password
+| GET    | `/users/:userId`       | Get my questions
+| GET    | `/users/:userId/votes` | Get my voted questions
+
 ### Questions
 
 | Method | URL | Description
 |--------|-----|-------------
-| GET    | `/`    | Get all questions
-| GET    | `/:id` | Get a question
-| POST   | `/`    | Post a question
-| PUT    | `/:id` | Update a question title/content
-| PATCH  | `/:id` | Patch a question title/content
-| DELETE | `/:id` | Delete a question
-| GET    | `/users/:userId`       | Get my questions
-| GET    | `/users/:userId/votes` | Get voted questions
+| GET    | `/questions`     | Get all questions
+| GET    | `/questions/:id` | Get a question
+| POST   | `/questions`     | Post a question
+| PUT    | `/questions/:id` | Update a question title/content
+| PATCH  | `/questions/:id` | Patch a question title/content
+| DELETE | `/questions/:id` | Delete a question
 
 ### Answers
 
 | Method | URL | Description
 |--------|-----|-------------
-| POST   | `/:id/answers`           | Create answer for a question
-| PUT    | `/:id/answers/:answerId` | Update an answer in the question
-| DELETE | `/:id/answers/:answerId` | Delete an answer in the question
+| POST   | `/questions/:id/answers`           | Create answer for a question
+| PUT    | `/questions/:id/answers/:answerId` | Update an answer in the question
+| DELETE | `/questions/:id/answers/:answerId` | Delete an answer in the question
 
 ### Votes
 
 | Method | URL | Description
 |--------|-----|-------------
-| POST   | `/:id/vote` | Upvote a question
-| DELETE | `/:id/vote` | Unvote a question
-| POST   | `/:id/answers/:answerId/vote` | Upvote an answer
-| DELETE | `/:id/answers/:answerId/unvote` | Unvote an answer
+| POST   | `/questions/:id/vote` | Upvote a question
+| DELETE | `/questions/:id/vote` | Unvote a question
+| POST   | `/questions/:id/answers/:answerId/vote` | Upvote an answer
+| DELETE | `/questions/:id/answers/:answerId/unvote` | Unvote an answer
