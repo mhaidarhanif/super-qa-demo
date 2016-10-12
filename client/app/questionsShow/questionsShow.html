@@ -21,7 +21,7 @@
     <a class="btn" ng-click="editing=!editing;" ng-show="isOwner(question) && !editing">edit</a>
     <a ng-show="isOwner(question)" type="button" ng-click="deleteQuestion()">delete</a>
 
-    <div class="text-right">Asked by {{question.user.name || "Anonymous"}} at {{question.createdAt}}</div>
+    <div class="text-right">Asked by {{question.user.name || "Anonymous"}} at {{question.createdAt|fromNow}}</div>
 
     <span ng-repeat="tag in question.tags">
       <span class="label label-info">
@@ -46,7 +46,7 @@
       <a class="btn" ng-click="editing=!editing;" ng-if="editing">cancel</button>
       <a ng-show="isOwner(answer)" type="button" ng-click="deleteAnswer(answer)">delete</a>
 
-      <div class="text-right">Answered by {{answer.user.name || "Anonymous"}} at {{question.createdAt}}</div>
+      <div class="text-right">Answered by {{answer.user.name || "Anonymous"}} at {{question.createdAt|fromNow}}</div>
 
     </div>
   </div>
