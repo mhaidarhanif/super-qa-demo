@@ -47,16 +47,12 @@ var QuestionSchema = new mongoose.Schema({
 
 QuestionSchema.pre('find', function (next) {
 	this.populate('user', 'name')
-	this.populate('comments.user', 'name')
 	this.populate('answers.user', 'name')
-	this.populate('answers.comments.user', 'name')
 	next()
 })
 QuestionSchema.pre('findOne', function (next) {
 	this.populate('user', 'name')
-	this.populate('comments.user', 'name')
 	this.populate('answers.user', 'name')
-	this.populate('answers.comments.user', 'name')
 	next()
 })
 

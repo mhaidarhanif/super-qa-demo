@@ -2,7 +2,7 @@
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0. A lot easier than version 4+.
 
-## Getting Started
+## Getting `ted
 
 ### Prerequisites
 
@@ -19,10 +19,42 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 3. Run `mongod` in a separate shell to keep an instance of the MongoDB Daemon running
 4. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
 
-## Build & development
+## Build and development
 
-Run `grunt build` for building and `grunt serve` for preview.
+Run `gulp build` for building and `gulp serve` for preview.
 
 ## Testing
 
 Running `npm test` will run the unit tests with karma.
+
+## API
+
+### Questions
+
+| Method | URL | Description
+|----------------------------
+| GET    | `/`    | Get all questions
+| GET    | `/:id` | Get a question
+| POST   | `/`    | Post a question
+| PUT    | `/:id` | Update a question title/content
+| PATCH  | `/:id` | Patch a question title/content
+| DELETE | `/:id` | Delete a question
+| GET    | `/users/:userId`       | Get my questions
+| GET    | `/users/:userId/votes` | Get voted questions
+
+### Answers
+
+| Method | URL | Description
+|---------------------------
+| POST   | `/:id/answers`           | Create answer for a question
+| PUT    | `/:id/answers/:answerId` | Update an answer in the question
+| DELETE | `/:id/answers/:answerId` | Delete an answer in the question
+
+### Votes
+
+| Method | URL | Description
+|----------------------------
+| POST   | `/:id/vote` | Upvote a question
+| DELETE | `/:id/vote` | Unvote a question
+| POST   | `/:id/answers/:answerId/vote` | Upvote an answer
+| DELETE | `/:id/answers/:answerId/unvote` | Unvote an answer
