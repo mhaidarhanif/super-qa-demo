@@ -1,8 +1,7 @@
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>paizaQA</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <h1>Super QA</h1>
+    <p class="lead">Question Answer</p>
   </div>
 </header>
 
@@ -11,19 +10,22 @@
   <div style="text-align: center">
     <a type="button" class="btn btn-primary" href="/questions/create">Ask Question</a>
   </div>
-
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Question</th>
+        <th>Description</th>
       </tr>
+      <tbody>
+        <tr ng-repeat="question in questions">
+          <td>
+            <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
+          </td>
+          <td>
+            {{question.content}}
+          </td>
+        </tr>
+      </tbody>
     </thead>
-    <tbody>
-      <tr ng-repeat="question in questions">
-        <td>
-          <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
-        </td>
-      </tr>
-    </tbody>
   </table>
 </div>
