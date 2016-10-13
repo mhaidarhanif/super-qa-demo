@@ -1,13 +1,10 @@
+<!-- floating navbar -->
 <div class="ui massive inverted fixed top menu" ng-controller="NavbarController">
 
   <!-- shift left -->
   <div class="header item">
     <!-- <img src="/images/logo.png"> -->
-    Super QA
-  </div>
-
-  <div class="item" ng-repeat="item in nav.menu" ng-class="{active: isActive(item.link())}" ui-sref-active="active" ng-show="item.show()">
-    <a ng-href="{{item.link()}}">{{item.title}}</a>
+    SuperNetwork
   </div>
 
   <!-- shift right -->
@@ -18,16 +15,41 @@
     <a class="active blue item" ng-hide="nav.isLoggedIn()" ui-sref-active="active" ui-sref="login">Sign in</a>
 
     <!-- user -->
-    <span class="item" ng-show="nav.isLoggedIn()">Hi {{ nav.getCurrentUser().name }}!</span>
+    <a class="active orange item" ng-show="nav.isLoggedIn()" ui-sref-active="active" ui-sref="settings">Hi {{ nav.getCurrentUser().name }}!</a>
 
     <!-- if admin -->
     <a class="active red item" ng-show="nav.isAdmin()" ui-sref-active="active" a ui-sref="admin">Admin Panel</a>
     <a class="active yellow item" ng-show="nav.isAdmin()" ui-sref-active="active" ui-sref="sandbox">Sandbox</a>
 
     <!-- user -->
-    <a class="active brown item" ng-show="nav.isLoggedIn()" ui-sref-active="active" ui-sref="settings"><i class="wrench icon"></i></a>
     <a class="item" ng-show="nav.isLoggedIn()" ui-sref="logout">Sign out</a>
 
   </div>
 
+</div>
+
+<!-- actionables............................................................ -->
+
+<!-- hero -->
+<header class="ui left aligned container">
+  <h2 class="ui huge header">
+  <i class="database icon"></i>
+  <div class="content">SuperQA
+  </div>
+</h2>
+</header>
+
+<!-- action buttons -->
+<div class="ui left aligned container actions">
+  <a class="huge orange ui button" href="/questions/create">Ask Question</a>
+
+  <span ng-repeat="item in nav.menu" ng-class="{active: isActive(item.link())}" ui-sref-active="active" ng-show="item.show()">
+    <a class="huge ui button" ng-href="{{item.link()}}">{{item.title}}</a>
+  </span>
+
+</div>
+
+<!-- separator -->
+<div class="ui horizontal divider">
+  <i class="help icon"></i>
 </div>
