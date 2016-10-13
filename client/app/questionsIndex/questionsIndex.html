@@ -1,61 +1,44 @@
-<div class="ui divided items container">
-  <div class="item">
-    <div class="image">
-      <img src="/images/wireframe/image.png">
-    </div>
-    <div class="content">
-      <a class="header">12 Years a Slave</a>
-      <div class="meta">
-        <span class="cinema">Union Square 14</span>
-      </div>
-      <div class="description">
-        <p></p>
-      </div>
-      <div class="extra">
-        <div class="ui label">IMAX</div>
-        <div class="ui label"><i class="globe icon"></i> Additional Languages</div>
-      </div>
-    </div>
-  </div>
-  <div class="item">
-    <div class="image">
-      <img src="/images/wireframe/image.png">
-    </div>
-    <div class="content">
-      <a class="header">My Neighbor Totoro</a>
-      <div class="meta">
-        <span class="cinema">IFC Cinema</span>
-      </div>
-      <div class="description">
-        <p></p>
-      </div>
-      <div class="extra">
-        <div class="ui right floated primary button">
-          Buy tickets
-          <i class="right chevron icon"></i>
-        </div>
-        <div class="ui label">Limited</div>
-      </div>
-    </div>
-  </div>
-  <div class="item">
-    <div class="image">
-      <img src="/images/wireframe/image.png">
-    </div>
-    <div class="content">
-      <a class="header">Watchmen</a>
-      <div class="meta">
-        <span class="cinema">IFC</span>
-      </div>
-      <div class="description">
-        <p></p>
-      </div>
-      <div class="extra">
-        <div class="ui right floated primary button">
-          Buy tickets
-          <i class="right chevron icon"></i>
+<div class="ui container">
+
+  <!-- menu -->
+  <div class="ui tabular menu">
+    <a class="active item"><i class="arrow up icon"></i>top</a>
+    <a class="item"><i class="bookmark icon"></i>bookmark</a>
+    <a class="item"><i class="book icon"></i>topic</a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search Q/A...">
+          <i class="search link icon"></i>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- segment -->
+  <div class="ui divided items">
+
+    <div class="item" ng-repeat="question in questions">
+      <div class="ui image statistic">
+        <div class="content">{{question.votes.length}}<span class="sub header">votes</span></div>
+        <div class="content">{{question.answers.length}}<span class="sub header">answers</span></div>
+        <div class="content">0<span class="sub header">views</span></div>
+      </div>
+      <div class="content">
+        <a class="header" ng-href="/questions/show/{{question._id}}">{{question.title}}</a>
+        <p>{{question.content | limitTo:140}}</p>
+        <div class="meta">
+          <span class="labels" ng-repeat="tag in question.tags">
+            <a class="ui label">{{tag.text}}</a>
+          </span>
+        </div>
+        <div class="meta">
+          <small>a few seconds ago by <a>user</a></small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- segment end -->
+
 </div>
