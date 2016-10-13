@@ -1,18 +1,35 @@
-#question-show-container .comment {
-  margin-left: 100px;
-  hr {
-    margin: 0;
+#question-show-container {
+  .comment {
+    margin-left: 100px;
+    hr {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+    }
   }
-  p {
-    margin: 0;
+  .answer {
+    margin-left: 50px;
+  }
+  .ui.statistic {
+    margin   : 0 20px;
+    font-size: 1em;
+    float    : right;
+    .value {
+      font-size: .6em;
+    }
   }
 }
-#question-show-container .answer {
-  margin-left: 50px;
+pagedown-editor,
+pagedown-viewer {
+  .ng-scope {
+    margin-bottom: 20px;
+  }
+}
+.wmd-input {
+  background-color: #fff;
 }
 .comment-wmd-input {
-  height          : 50px;
-  width           : 100%;
-  background-color: Gainsboro;
-  border          : 1px solid DarkGray;
+  height: 50px;
+  width : 100%;
 }

@@ -27,7 +27,7 @@
       </div>
       <div class="content">
         <a class="ui orange header" ng-href="/questions/show/{{question._id}}">{{question.title}}</a>
-        <p>{{question.content | limitTo:140}}</p>
+        <p>{{question.content | limitTo:80}}...</p>
         <div class="meta">
           <span class="labels" ng-repeat="tag in question.tags">
             <a class="ui label">{{tag.text}}</a>

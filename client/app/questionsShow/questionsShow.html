@@ -1,53 +1,57 @@
-<div class="container" id="question-show-container">
+<div class="ui container" id="question-show-container">
 
-  <div style="float: left;font-size: x-large; padding: 0; width: 2em; text-align: center;">
-    <button ng-if=" isVote(question)" type="button" style="background: transparent; border: 0;" ng-click="unvote('')">
-      <span class="glyphicon glyphicon-chevron-up" style="color: #ff922b;" ></span>
-    </button>
-    <button ng-if="!isVote(question)" type="button" style="background: transparent; border: 0;" ng-click="vote('')">
-      <span class="glyphicon glyphicon-chevron-up"></span>
-    </button>
-    <br/>
-    <div>{{question.votes.length}}</div>
+  <!-- TODO: Disable save if title and content are broken -->
+
+  <!-- vote -->
+  <div class="ui statistic">
+    <div class="value" ng-if="isVote(question)" ng-click="unvote('')">
+      <i class="small plus icon" style="color: #ff922b;"></i> {{question.votes.length}}
+    </div>
+    <div class="value" ng-if="!isVote(question)" type="button" ng-click="vote('')">
+      <i class="small plus icon"></i> {{question.votes.length}}
+    </div>
+    <div class="label">Votes</div>
   </div>
 
+  <!-- title -->
+  <h1 class="ui huge header">
+    <div ng-if="!editing">{{question.title}}</div>
+    <!-- edit question title -->
+    <input type="text" class="form-control" ng-model="question.title" name="question_title" ng-if="editing" required>
+    <span class="text-danger" ng-messages="form.question_title.$error">
+      <span ng-message="required">Please fix your title</span>
+    </span>
+  </h1>
+
+  <!-- meta -->
+  <p>asked {{question.createdAt|fromNow}} by <a href="/users">{{question.user.name || "Anonymous"}}</a></p>
+
+  <!-- tags/labels -->
+  <span ng-repeat="tag in question.tags">
+    <span class="label label-info">
+      {{tag.text}}
+    </span>
+  </span>
+
+  <!-- content -->
   <div>
-    <h1>
-      <div ng-if="!editing">{{question.title}}</div>
-      <!-- edit question title -->
-      <input type="text" class="form-control" ng-model="question.title" name="question_title" ng-if="editing" required>
-      <span class="text-danger" ng-messages="form.question_title.$error">
-        <span ng-message="required">Please fix your title</span>
-      </span>
-
-    </h1>
-
-    <!-- TODO: Disable save if title and content are broken -->
-
+    <!-- actual question content -->
     <pagedown-viewer content="question.content" ng-if="!editing"></pagedown-viewer>
 
     <!-- edit question content -->
     <pagedown-editor ng-model="question.content" ng-if=" editing"></pagedown-editor>
-    <button type="submit" class="btn btn-primary" ng-click="editing=false; updateQuestion()" ng-show=" editing">save</button>
-    <a class="btn" ng-click="editing=!editing;" ng-show="isOwner(question) && !editing">edit</a>
-    <a ng-show="isOwner(question)" type="button" ng-click="deleteQuestion()">delete</a>
 
-    <div class="text-right">Asked by {{question.user.name || "Anonymous"}} at {{question.createdAt|fromNow}}</div>
-
-    <span ng-repeat="tag in question.tags">
-      <span class="label label-info">
-        {{tag.text}}
-      </span>
-    </span>
+    <a class="ui mini green basic button" ng-click="editing=false; updateQuestion()" ng-show=" editing">save</a>
+    <a class="ui mini blue basic button" ng-click="editing=!editing;" ng-show="isOwner(question) && !editing">edit</a>
+    <a class="ui mini red basic button" ng-show="isOwner(question)" ng-click="deleteQuestion()">delete</a>
 
   </div>
 
-  <hr>
+  <!-- list of answers -->
+  <div class="ui divider"></div>
 
   <h3>{{question.answers.length}} Answers</h3>
   <div ng-repeat="answer in question.answers">
-
-    <hr>
 
     <div style="float: left;font-size: large; padding: 0; width: 2em; text-align: center;">
       <button ng-if="isVote(answer)" type="button" style="background: transparent; border: 0;" ng-click="unvote('/answers/' + answer._id)">
@@ -75,13 +79,11 @@
 
   </div>
 
-  <hr>
-
-  <h3>Answers</h3>
+  <!-- anwer that question -->
+  <h3>Your Answer</h3>
   <form name="answerForm" ng-submit="submitAnswer()">
-    <!-- <textarea rows=10 cols=80 ng-model="newAnswer.content"></textarea> -->
     <pagedown-editor ng-model="newAnswer.content" required></pagedown-editor>
-    <input type="submit" class="btn btn-primary" ng-disabled="answerForm.$invalid" value="Post Your Answer">
+    <input type="submit" class="ui blue button" ng-disabled="answerForm.$invalid" value="Post Your Answer">
   </form>
 
 </div>
