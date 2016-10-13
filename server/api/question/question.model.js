@@ -42,11 +42,11 @@ QuestionSchema.pre('find', function (next) {
 	this.populate('answers.user', 'name')
 	next()
 })
+
 QuestionSchema.pre('findOne', function (next) {
 	this.populate('user', 'name')
 	this.populate('answers.user', 'name')
 	next()
 })
-
 
 export default mongoose.model('Question', QuestionSchema)
