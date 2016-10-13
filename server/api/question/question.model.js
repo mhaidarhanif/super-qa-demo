@@ -16,14 +16,6 @@ var QuestionSchema = new mongoose.Schema({
 		type: mongoose.Schema.ObjectId,
 		ref: 'User'
   }],
-	createdAt: { // timestamp
-		type: Date,
-		default: Date.now
-	},
-	updatedAt: { // timestamp
-		type: Date,
-		default: Date.now
-	},
 	answers: [{
 		content: String,
 		user: {
@@ -43,7 +35,7 @@ var QuestionSchema = new mongoose.Schema({
 			default: Date.now
 		}
   }]
-})
+}, { timestamps: true })
 
 QuestionSchema.pre('find', function (next) {
 	this.populate('user', 'name')

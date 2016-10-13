@@ -1,7 +1,19 @@
 {
   "name": "super-qa",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "server/app.js",
+  "private": true,
+  "engines": {
+    "node": "^6.5.0",
+    "npm": "^3.10.0"
+  },
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
+    "serve": "gulp serve",
+    "test": "gulp test",
+    "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
+  },
   "dependencies": {
     "express": "^4.13.3",
     "morgan": "~1.6.1",
@@ -103,15 +115,5 @@
     "phantomjs": "^1.9.18",
     "proxyquire": "^1.0.1",
     "supertest": "^1.1.0"
-  },
-  "engines": {
-    "node": "^4.2.3",
-    "npm": "^2.14.7"
-  },
-  "scripts": {
-    "start": "node server",
-    "test": "gulp test",
-    "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
-  },
-  "private": true
+  }
 }
