@@ -1,47 +1,32 @@
-<div class="ui top fixed menu" ng-controller="NavbarController">
+<div class="ui massive inverted fixed top menu" ng-controller="NavbarController">
+
+  <!-- shift left -->
   <div class="header item">
     <!-- <img src="/images/logo.png"> -->
     Super QA
   </div>
-  <a class="item">All Questions</a>
-  <a class="item">Sign in</a>
-</div>
 
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
+  <div class="item" ng-repeat="item in nav.menu" ng-class="{active: isActive(item.link())}" ui-sref-active="active" ng-show="item.show()">
+    <a ng-href="{{item.link()}}">{{item.title}}</a>
+  </div>
 
-  <div class="container">
+  <!-- shift right -->
+  <div class="right menu">
 
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">Super QA</a>
-    </div>
+    <!-- visitor -->
+    <a class="active orange item" ng-hide="nav.isLoggedIn()" ui-sref-active="active" ui-sref="signup">Sign Up</a>
+    <a class="active blue item" ng-hide="nav.isLoggedIn()" ui-sref-active="active" ui-sref="login">Sign in</a>
 
-    <div collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in nav.menu" ng-class="{active: isActive(item.link())}" ui-sref-active="active" ng-show="item.show()">
-          <a ng-href="{{item.link()}}">{{item.title}}</a>
-        </li>
-      </ul>
+    <!-- user -->
+    <span class="item" ng-show="nav.isLoggedIn()">Hi {{ nav.getCurrentUser().name }}!</span>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
-        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Sign in</a></li>
+    <!-- if admin -->
+    <a class="active red item" ng-show="nav.isAdmin()" ui-sref-active="active" a ui-sref="admin">Admin Panel</a>
+    <a class="active yellow item" ng-show="nav.isAdmin()" ui-sref-active="active" ui-sref="sandbox">Sandbox</a>
 
-        <li ng-show="nav.isLoggedIn()">
-          <p class="navbar-text">Hi {{ nav.getCurrentUser().name }}!</p>
-        </li>
-        <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin"><b>Admin Panel</b></a></li>
-        <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="sandbox"><b>Sandbox</b></a></li>
-
-        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Sign out</a></li>
-      </ul>
-    </div>
+    <!-- user -->
+    <a class="active brown item" ng-show="nav.isLoggedIn()" ui-sref-active="active" ui-sref="settings"><i class="wrench icon"></i></a>
+    <a class="item" ng-show="nav.isLoggedIn()" ui-sref="logout">Sign out</a>
 
   </div>
 

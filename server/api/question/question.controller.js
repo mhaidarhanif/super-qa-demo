@@ -124,7 +124,7 @@ export function destroy(req, res) {
 
 // -----------------------------------------------------------------------------
 
-// Gets a list of Answers in a Question
+// TODO: Get a list of Answers in a Question
 export function indexAnswer(req, res) {
 	Question.find({ _id: req.params.id, 'answers._id': req.params.answerId }).sort({ createdAt: -1 }).limit(20).execAsync()
 		.then(respondWithResult(res))
