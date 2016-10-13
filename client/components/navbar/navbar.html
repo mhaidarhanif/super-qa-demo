@@ -1,5 +1,5 @@
 <!-- floating navbar -->
-<div class="ui massive inverted fixed top menu" ng-controller="NavbarController">
+<div class="ui inverted fixed top menu" ng-controller="NavbarController">
 
   <!-- shift left -->
   <div class="header item">
@@ -32,7 +32,7 @@
 
 <!-- hero -->
 <header class="ui left aligned container">
-  <h2 class="ui huge header">
+  <h2 class="ui header">
   <i class="database icon"></i>
   <div class="content">SuperQA
   </div>
@@ -41,15 +41,15 @@
 
 <!-- action buttons -->
 <div class="ui left aligned container actions">
-  <a class="huge orange ui button" href="/questions/create">Ask Question</a>
+  <a class="orange ui button" href="/questions/create">Ask Question</a>
 
   <span ng-repeat="item in nav.menu" ng-class="{active: isActive(item.link())}" ui-sref-active="active" ng-show="item.show()">
-    <a class="huge ui button" ng-href="{{item.link()}}">{{item.title}}</a>
+    <a class="ui button" ng-href="{{item.link()}}">{{item.title}}</a>
   </span>
 
 </div>
 
 <!-- separator -->
 <div class="ui horizontal divider">
-  <i class="help icon"></i>
+  <i class="loading setting icon"></i>
 </div>
