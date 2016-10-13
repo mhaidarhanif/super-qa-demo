@@ -1,44 +1,61 @@
-<div class="container">
-
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="20">Votes</th>
-        <th width="20">Answers</th>
-        <th>Question</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="question in questions">
-        <td style="text-align: center; vertical-align:middle">
-          <div style="font-size: xx-large;">{{question.votes.length}}</div>
-        </td>
-        <td style="text-align: center; vertical-align:middle">
-          <div style="font-size: xx-large;">{{question.answers.length}}</div>
-        </td>
-        <td>
-          <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
-          <div>
-            <span ng-repeat="tag in question.tags">
-                <span class="label label-info">
-                  {{tag.text}}
-                </span> &nbsp;
-            </span>
-          </div>
-          <div class="clearfix"></div>
-        </td>
-        <td>
-          <p>
-            {{question.content}}
-          </p>
-          <div class="clearfix"></div>
-          <div style="float: right;">
-            Asked by <a ng-href="/users/{{question.user._id}}">{{question.user.name || "Anonymous"}}</a> at {{question.createdAt|fromNow}}
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
+<div class="ui divided items container">
+  <div class="item">
+    <div class="image">
+      <img src="/images/wireframe/image.png">
+    </div>
+    <div class="content">
+      <a class="header">12 Years a Slave</a>
+      <div class="meta">
+        <span class="cinema">Union Square 14</span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        <div class="ui label">IMAX</div>
+        <div class="ui label"><i class="globe icon"></i> Additional Languages</div>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="image">
+      <img src="/images/wireframe/image.png">
+    </div>
+    <div class="content">
+      <a class="header">My Neighbor Totoro</a>
+      <div class="meta">
+        <span class="cinema">IFC Cinema</span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        <div class="ui right floated primary button">
+          Buy tickets
+          <i class="right chevron icon"></i>
+        </div>
+        <div class="ui label">Limited</div>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="image">
+      <img src="/images/wireframe/image.png">
+    </div>
+    <div class="content">
+      <a class="header">Watchmen</a>
+      <div class="meta">
+        <span class="cinema">IFC</span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        <div class="ui right floated primary button">
+          Buy tickets
+          <i class="right chevron icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
