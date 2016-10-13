@@ -9,10 +9,21 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 ### Prerequisites
 
 - [Git](https://git-scm.com)
-- [Node.js and npm](nodejs.org) : Node ^6
-- [Bower](bower.io) (`npm install --global bower`)
-- [Gulp](http://gulpjs.com) (`npm install --global gulp`)
+  - `brew install git`
+- [Node.js and npm](nodejs.org)
+  - `brew install node`
+- [Express](http://expressjs.com)
+- [Angular](https://angularjs.org)
 - [MongoDB](https://mongodb.org)
+  - `brew install mongodb`
+- [Bower](bower.io)
+  - `npm install --global bower`
+- [Gulp](http://gulpjs.com)
+  - `npm install --global gulp`
+
+### Tools
+
+Bower, Gulp, Grunt, Babel, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, Less, and EditorConfig.
 
 ### Development
 
