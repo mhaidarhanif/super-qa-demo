@@ -1,19 +1,19 @@
 <div class="ui container">
 
-  <!-- menu -->
+  <!-- TODO: menu -->
   <div class="ui tabular menu">
-    <a class="active item"><i class="arrow up icon"></i>top</a>
-    <a class="item"><i class="bookmark icon"></i>bookmark</a>
-    <a class="item"><i class="book icon"></i>topic</a>
-    <div class="right menu">
-      <div class="item">
-        <div class="ui icon input">
-          <input type="text" placeholder="Search questions/answers...">
-          <i class="search link icon"></i>
-        </div>
-      </div>
+<a class="active item"><i class="arrow up icon"></i>top</a>
+<a class="item"><i class="bookmark icon"></i>bookmark</a>
+<a class="item"><i class="book icon"></i>topic</a>
+<div class="right menu">
+  <div class="item">
+    <div class="ui icon input">
+      <input type="text" placeholder="Search questions/answers...">
+      <i class="search link icon"></i>
     </div>
   </div>
+</div>
+</div>
 
   <!-- segment -->
   <div class="ui divided items">
@@ -34,7 +34,7 @@
           </span>
         </div>
         <div class="meta">
-          <small>a few seconds ago by <a href="/users/:id">{{question.user.name}}</a></small>
+          <small>asked {{question.createdAt|fromNow}} by <a ng-href="/users/{{question.user._id}}">{{question.user.name}}</a></small>
         </div>
       </div>
     </div>
