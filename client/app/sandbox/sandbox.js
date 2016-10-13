@@ -4,7 +4,7 @@ angular.module('superQaApp')
 	.config(function ($stateProvider) {
 		$stateProvider
 			.state('sandbox', {
-				url: '/',
+				url: '/sandbox',
 				templateUrl: 'app/sandbox/sandbox.html',
 				controller: 'SandboxController',
 				controllerAs: 'sandbox'
