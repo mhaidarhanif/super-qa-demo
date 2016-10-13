@@ -5,10 +5,10 @@
   <!-- vote -->
   <div class="ui statistic">
     <div class="value" ng-if="isVote(question)" ng-click="unvote('')">
-      <i class="small plus icon" style="color: #ff922b;"></i> {{question.votes.length}}
+      <i class="small orange plus icon"></i> {{question.votes.length}}
     </div>
     <div class="value" ng-if="!isVote(question)" type="button" ng-click="vote('')">
-      <i class="small plus icon"></i> {{question.votes.length}}
+      <i class="small gray plus icon"></i> {{question.votes.length}}
     </div>
     <div class="label">Votes</div>
   </div>

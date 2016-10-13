@@ -3,6 +3,7 @@
 // @import '../bower_components/font-awesome/less/font-awesome.less';
 // @icon-font-path: '../bower_components/bootstrap/fonts/';
 // @fa-font-path: '../bower_components/font-awesome/fonts';
+@import '../../node_modules/open-color/open-color.less';
 /**
  * App-wide Styles
  */
@@ -19,6 +20,18 @@ body {
 navbar {
   z-index: 10;
 }
+/**
+* Colors
+*/
+i.orange.icon {
+  color: @oc-orange-5 !important;
+}
+.ui.orange.button {
+  background-color: @oc-orange-5;
+}
+.gray {
+  color: @oc-gray-5;
+}
 // injector
 @import 'account/login/login';
 @import 'admin/admin';
@@ -29,5 +42,4 @@ navbar {
 @import '../components/footer/footer';
 @import '../components/modal/modal';
 @import '../components/navbar/navbar';
-@import '../components/oauth-buttons/oauth-buttons';
-// endinjector
+@import '../components/oauth-buttons/oauth-buttons'; // endinjector
