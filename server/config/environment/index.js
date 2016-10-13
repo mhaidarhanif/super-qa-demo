@@ -29,7 +29,7 @@ var all = {
 
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
-    session: 'super-qa3-secret'
+    session: process.env.SESSION_SECRET || 'superqa-secret'
   },
 
   // MongoDB connection options
