@@ -4,7 +4,7 @@
   <!-- shift left -->
   <div class="header item">
     <!-- <img src="/images/logo.png"> -->
-    SuperNetwork
+    <a href="http://mhaidarhanif.com">SuperNetwork</a>
   </div>
 
   <!-- shift right -->
@@ -18,7 +18,7 @@
     <a class="active orange item" ng-show="nav.isLoggedIn()" ui-sref-active="active" ui-sref="settings">Hi {{ nav.getCurrentUser().name }}!</a>
 
     <!-- if admin -->
-    <a class="active red item" ng-show="nav.isAdmin()" ui-sref-active="active" a ui-sref="admin">Admin Panel</a>
+    <a class="active green item" ng-show="nav.isAdmin()" ui-sref-active="active" a ui-sref="admin">Admin Panel</a>
     <a class="active yellow item" ng-show="nav.isAdmin()" ui-sref-active="active" ui-sref="sandbox">Sandbox</a>
 
     <!-- user -->
@@ -47,9 +47,9 @@
     <a class="ui button" ng-href="{{item.link()}}">{{item.title}}</a>
   </span>
 
-</div>
+  <!-- separator -->
+  <div class="ui horizontal divider">
+    <i class="loading setting icon"></i>
+  </div>
 
-<!-- separator -->
-<div class="ui horizontal divider">
-  <i class="loading setting icon"></i>
 </div>

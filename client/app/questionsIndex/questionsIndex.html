@@ -8,7 +8,7 @@
     <div class="right menu">
       <div class="item">
         <div class="ui icon input">
-          <input type="text" placeholder="Search Q/A...">
+          <input type="text" placeholder="Search questions/answers...">
           <i class="search link icon"></i>
         </div>
       </div>
@@ -22,10 +22,11 @@
       <div class="ui image statistic">
         <div class="content">{{question.votes.length}}<span class="sub header">votes</span></div>
         <div class="content">{{question.answers.length}}<span class="sub header">answers</span></div>
-        <div class="content">0<span class="sub header">views</span></div>
+        <!-- <div class="ui divider"></div><div class="content">
+  0<span class="sub header">views</span></div> -->
       </div>
       <div class="content">
-        <a class="header" ng-href="/questions/show/{{question._id}}">{{question.title}}</a>
+        <a class="ui orange header" ng-href="/questions/show/{{question._id}}">{{question.title}}</a>
         <p>{{question.content | limitTo:140}}</p>
         <div class="meta">
           <span class="labels" ng-repeat="tag in question.tags">

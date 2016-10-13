@@ -1,25 +1,38 @@
-<div class="container">
-  <form name="form" ng-submit="submit()">
-    <h2>Title:</h2>
-    <input type="text" class="form-control" ng-model="question.title" name="question_title" required>
-    <span class="text-danger" ng-messages="form.question_title.$error">
-      <span ng-message="required">Please insert a title</span>
-    </span>
-    <!-- <span class="text-success" ng-show="form.question_title.$valid">OK</span> -->
+<div class="ui container">
 
-    <h2>Question:</h2>
-    <!-- <textarea rows=10 cols=80 ng-model="question.content"></textarea> -->
-    <pagedown-editor ng-model="question.content"></pagedown-editor>
-    <span class="text-danger" ng-messages="form.question_content.$error">
-      <span ng-message="required">Please insert the question description</span>
-    </span>
-    <!-- <span class="text-success" ng-show="form.question_content.$valid">OK</span> -->
+  <form class="ui form" name="form" ng-submit="submit()">
 
-    <h2>Tags:</h2>
-    <tags-input ng-model="question.tags">
-      <auto-complete source="loadTags($query)"></auto-complete>
-    </tags-input>
+    <!-- title -->
+    <div class="field">
+      <label>Title:</label>
+      <input type="text" class="form-control" ng-model="question.title" name="question_title" placeholder="What's your main question? Be specific" required>
+      <span class="text-danger" ng-messages="form.question_title.$error">
+        <span ng-message="required">Please insert a title</span>
+      </span>
+      <span class="text-success" ng-show="form.question_title.$valid">Nice!</span>
+    </div>
 
-    <input type="submit" class="btn btn-primary" value="Post question">
+    <!-- content -->
+    <div class="field">
+      <label>Question Details:</label>
+      <!-- <textarea rows=10 cols=80 ng-model="question.content"></textarea> -->
+      <pagedown-editor ng-model="question.content" required></pagedown-editor>
+      <span class="text-danger" ng-messages="form.question_content.$error">
+        <span ng-message="required">Please insert the question description</span>
+      </span>
+      <span class="text-success" ng-show="form.question_content.$valid">Nice!</span>
+    </div>
+
+    <!-- tags/labels -->
+    <div class="field">
+      <label>Tags:</label>
+      <tags-input ng-model="question.tags" placeholder="">
+        <auto-complete source="loadTags($query)"></auto-complete>
+      </tags-input>
+    </div>
+
+    <input type="submit" class="ui blue button" value="Post Your Question">
+
   </form>
+
 </div>
