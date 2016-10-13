@@ -28,6 +28,7 @@
         </li>
         <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
         <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin"><b>Admin Panel</b></a></li>
+        <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="sandbox"><b>Sandbox</b></a></li>
         <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Sign out</a></li>
       </ul>
 
