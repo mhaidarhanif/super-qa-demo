@@ -24,7 +24,7 @@
   </h1>
 
   <!-- meta -->
-  <p>asked {{question.createdAt|fromNow}} by <a href="/users">{{question.user.name || "Anonymous"}}</a></p>
+  <p>asked {{question.createdAt|fromNow}} by <a href="/users/:id">{{question.user.name || "Anonymous"}}</a></p>
 
   <!-- tags/labels -->
   <span ng-repeat="tag in question.tags">
@@ -39,7 +39,7 @@
     <pagedown-viewer content="question.content" ng-if="!editing"></pagedown-viewer>
 
     <!-- edit question content -->
-    <pagedown-editor ng-model="question.content" ng-if=" editing"></pagedown-editor>
+    <pagedown-editor ng-model="question.content" ng-if="editing"></pagedown-editor>
 
     <a class="ui mini green basic button" ng-click="editing=false; updateQuestion()" ng-show=" editing">save</a>
     <a class="ui mini blue basic button" ng-click="editing=!editing;" ng-show="isOwner(question) && !editing">edit</a>
