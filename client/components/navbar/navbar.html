@@ -1,3 +1,12 @@
+<div class="ui top fixed menu" ng-controller="NavbarController">
+  <div class="header item">
+    <!-- <img src="/images/logo.png"> -->
+    Super QA
+  </div>
+  <a class="item">All Questions</a>
+  <a class="item">Sign in</a>
+</div>
+
 <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
 
   <div class="container">
@@ -13,7 +22,6 @@
     </div>
 
     <div collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-
       <ul class="nav navbar-nav">
         <li ng-repeat="item in nav.menu" ng-class="{active: isActive(item.link())}" ui-sref-active="active" ng-show="item.show()">
           <a ng-href="{{item.link()}}">{{item.title}}</a>
@@ -33,7 +41,6 @@
         <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
         <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Sign out</a></li>
       </ul>
-
     </div>
 
   </div>

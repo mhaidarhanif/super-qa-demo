@@ -92,3 +92,16 @@ Run `npm test` will run the unit tests with Karma.
 | DELETE | `/questions/:id/vote` | Unvote a question
 | POST   | `/questions/:id/answers/:answerId/vote` | Upvote an answer
 | DELETE | `/questions/:id/answers/:answerId/unvote` | Unvote an answer
+
+--------------------------------------------------------------------------------
+
+## Problems
+
+There is an automatic `wiredep:client` in gulp process. In `client/bower_components/semantic/bower.json` change the provided `main` property likewise:
+
+```js
+"main": [
+  "dist/semantic.min.css",
+  "dist/semantic.min.js"
+],
+```
