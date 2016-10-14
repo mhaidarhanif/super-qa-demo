@@ -2,41 +2,48 @@
 
   <!-- TODO: menu -->
   <div class="ui tabular menu">
-<a class="active item"><i class="arrow up icon"></i>top</a>
-<a class="item"><i class="bookmark icon"></i>bookmark</a>
-<a class="item"><i class="book icon"></i>topic</a>
-<div class="right menu">
-  <div class="item">
-    <div class="ui icon input">
-      <input type="text" placeholder="Search questions/answers...">
-      <i class="search link icon"></i>
+    <a class="active item"><i class="arrow up icon"></i>top</a>
+    <a class="item"><i class="bookmark icon"></i>bookmark</a>
+    <a class="item"><i class="book icon"></i>topic</a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search questions/answers...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 
   <!-- segment -->
   <div class="ui divided items">
 
     <div class="item" ng-repeat="question in questions">
+      <!-- <a ng-href="/questions/show/{{question._id}}"> -->
+
       <div class="ui image statistic">
-        <div class="content">{{question.votes.length}}<span class="sub header">votes</span></div>
-        <div class="content">{{question.answers.length}}<span class="sub header">answers</span></div>
-        <!-- <div class="ui divider"></div><div class="content">
-  0<span class="sub header">views</span></div> -->
+        <div class="ui content" ng-class="{'green': question.votes.length>0}">{{question.votes.length}}<span class=" sub header ">votes</span></div>
+        <div class="ui content " ng-class="{ 'green': question.answers.length>0}">{{question.answers.length}}<span class="sub header">answers</span></div>
+        <!-- <div class="content">0<span class="sub header">views</span></div> -->
       </div>
+
       <div class="content">
         <a class="ui orange header" ng-href="/questions/show/{{question._id}}">{{question.title}}</a>
         <p>{{question.content | limitTo:80}}...</p>
         <div class="meta">
           <span class="labels" ng-repeat="tag in question.tags">
-            <a class="ui label">{{tag.text}}</a>
+            <a class="ui blue label">{{tag.text}}</a>
           </span>
         </div>
         <div class="meta">
-          <small>asked {{question.createdAt|fromNow}} by <a ng-href="/users/{{question.user._id}}">{{question.user.name}}</a></small>
+          <small>asked {{question.createdAt|fromNow}}
+            <span ng-if="question.user.name">by <a ng-href="/users/{{question.user._id}}">{{question.user.name}}</a></span>
+            <span ng-if="!question.user.name">anonymously</span>
+          </small>
         </div>
       </div>
+
+      <!-- </a> -->
     </div>
 
   </div>

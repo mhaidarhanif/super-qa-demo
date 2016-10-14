@@ -5,12 +5,19 @@ h1 {
 }
 .ui {
   font-size: 1.2em;
-  .statistic {
+  &.statistic {
     .content {
       font-size: .8em;
       .sub.header {
         padding-left: 5px;
       }
     }
+  }
+  &.blue.label {
+    background-color: @oc-blue-1 !important;
+    color           : @oc-blue-5 !important;
+  }
+  &.green.content {
+    color: @oc-green-5;
   }
 }
