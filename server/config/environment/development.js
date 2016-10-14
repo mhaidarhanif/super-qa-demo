@@ -10,6 +10,7 @@ module.exports = {
 	},
 
 	// Seed database on startup
-	seedDB: true
+	// TODO: config this as wish
+	seedDB: false
 
 };
