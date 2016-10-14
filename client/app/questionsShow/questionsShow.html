@@ -13,6 +13,11 @@
     <div class="label">Votes</div>
   </div>
 
+  <!-- tags/labels -->
+  <span class="labels" ng-repeat="tag in question.tags">
+    <a class="ui blue label">{{tag.text}}</a>
+  </span>
+
   <!-- title -->
   <h1 class="ui huge header">
     <div ng-if="!editing">{{question.title}}</div>
@@ -25,13 +30,6 @@
 
   <!-- meta -->
   <p>asked {{question.createdAt|fromNow}} by <a ng-href="/users/{{question.user._id}}">{{question.user.name || "Anonymous"}}</a></p>
-
-  <!-- tags/labels -->
-  <span ng-repeat="tag in question.tags">
-    <span class="label label-info">
-      {{tag.text}}
-    </span>
-  </span>
 
   <!-- content -->
   <div>
