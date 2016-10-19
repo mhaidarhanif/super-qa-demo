@@ -6,7 +6,10 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 ## Getting Started
 
-**SPECIAL:** Run `npm run setup` to do all of the npm-related things.
+**SPECIAL:**
+
+- Run `npm run setup` to do all of the npm-related things.
+- Run `npm run setup:quick` to install all dependencies.
 
 ### Prerequisites
 

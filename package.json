@@ -8,7 +8,8 @@
     "npm": "^3.10.0"
   },
   "scripts": {
-    "setup": "npm i -g yarn bower gulp && yarn && bower install",
+    "setup": "npm i -g yarn bower gulp && npm run setup:quick",
+    "setup:quick": "yarn && bower install",
     "start": "node server",
     "dev": "nodemon server",
     "serve": "gulp serve",
