@@ -1,6 +1,6 @@
 {
   "name": "super-qa-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "server/app.js",
   "private": true,
   "engines": {
