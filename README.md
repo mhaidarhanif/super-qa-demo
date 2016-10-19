@@ -1,6 +1,10 @@
-# Super QA
+# Super QA Demo
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0. A lot easier than version 4+.
+
+![Home](assets/super-qa-home.png)
+
+![Ask](assets/super-qa-ask.png)
 
 --------------------------------------------------------------------------------
 
