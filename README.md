@@ -27,7 +27,7 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 ### Tools
 
-Bower, Gulp, Grunt, Babel, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, Less, and EditorConfig.
+Node.js, npm, Yarn, Bower, Gulp, Grunt, Babel, Karma, Mocha, JSHint, Node Inspector, LiveReload, Protractor, Jade, Stylus, Sass, Less, and EditorConfig.
 
 ### Development
 
@@ -37,6 +37,10 @@ Bower, Gulp, Grunt, Babel, Karma, Mocha, JSHint, Node Inspector, Livereload, Pro
 3. Run `mongod` in a separate shell to keep an instance of the MongoDB Daemon running. [Homebrew and Lunchy make this easy](https://changelog.com/posts/lunchy-a-friendly-wrapper-for-launchctl).
 4. [Fix some problems with Semantic](#problems). Just a quick rename.
 5. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
+
+**Extra**
+
+Edit `server/config/local.env.js` to suit your OAuth needs.
 
 ### Build and Development
 
