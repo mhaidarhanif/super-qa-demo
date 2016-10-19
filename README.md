@@ -33,8 +33,10 @@ Bower, Gulp, Grunt, Babel, Karma, Mocha, JSHint, Node Inspector, Livereload, Pro
 
 1. Run `yarn install` or `npm install` to install server dependencies.
 2. Run `bower install` to install front-end dependencies.
+   - If there's something wrong when serving the app, run `bower install --save angular` separately, then choose the last option. This is due the current `angular-pagedown` that I'm using is about obsolete. Will upgrade it soon.
 3. Run `mongod` in a separate shell to keep an instance of the MongoDB Daemon running. [Homebrew and Lunchy make this easy](https://changelog.com/posts/lunchy-a-friendly-wrapper-for-launchctl).
-4. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
+4. [Fix some problems with Semantic](#problems). Just a quick rename.
+5. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
 
 ### Build and Development
 
